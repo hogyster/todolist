@@ -1,0 +1,33 @@
+import React, { Component } from "react";
+
+class MyComponent extends Component {
+  state = {
+    input: "",
+    array: ["asadt", "adfsd", "qerwr"]
+  };
+
+  handleChange = e => {
+    this.setState({
+      input: e.target.value,
+      array: this.state.array.concat(this.state.input)
+    });
+  };
+  handleInsert = () => {
+    this.setState({
+      input: ""
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <input onChange={this.handleChange} value={this.state.input} />
+        <button onClick={this.handleInsert}>추가</button>
+        {this.state.array.map(text => (
+          <div>{text}</div>
+        ))}
+      </div>
+    );
+  }
+}
+export default MyComponent;
